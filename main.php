@@ -1,6 +1,7 @@
 <?php
+session_start();
 require 'vendor/autoload.php';
-
+$n = 9090;
 $app = new \atk4\ui\App('Swelix');
 $app->initLayout('Centered');
 
@@ -12,7 +13,6 @@ $col_2 = $columns->addColumn(10);
 $col_3 = $columns->addColumn(3);
 
  $clicker = $col_2->add(["Button","25","green fluid big"]);
- $clicker->on('click', function($clicker) {
-   $clicker->set("Test");
-   $clicker->js()->reload();
-});
+ $label = $col_2->add(["Label",$_SESSION['user_id']]);
+
+$save = $col_2->add(["Button","Save","blue big"]);
