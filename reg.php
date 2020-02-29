@@ -9,7 +9,7 @@ $app = new \atk4\ui\App('Swelix');
 $app->initLayout('Centered');
 
 $form = $app->layout->add('Form');
-$form->setModel(new User($db));
+$form->setModel(new User($db),['nickname','name','surname','email','password']);
 $form->buttonSave->set("Create account");
 $model = new User($db);
 
