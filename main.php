@@ -1,9 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script>
+    window.onload = function() {
+      var click = document.getElementById("clicke");
+      var a = "<?=session_start() ?>";
+      var val = "<?= $_SESSION['cookie']; ?>";
+      click.value = val;
+   }
+   </script>
+  </head>
+  <body>
+
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
 <?php
-session_start();
 require 'vendor/autoload.php';
+require 'conection.php';
 $n = 9090;
 $app = new \atk4\ui\App('Swelix');
 $app->initLayout('Centered');
+$user = new User($db);
+$user->load($_SESSION['user_id']);
+$_SESSION['cookie'] = $user['clicker_count'];
+$user->unload();
 
 //$image = $app->add(["Image","https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/fa/fa6594f0589633499206ec533a32d0573c4e4d80_full.jpg","centered"]);
 
